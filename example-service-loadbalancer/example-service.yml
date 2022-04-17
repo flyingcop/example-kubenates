@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: example-service-nodeport
+  name: example-service-loadbalancer
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: example-pod
     tier: app
   ports:
-    - port: 80
+    - port: 30000
       protocol: TCP
-      nodePort: 30010
+      targetPort: 80
