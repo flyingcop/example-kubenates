@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-pod
+      tier: app
+  template:
+    metadata:
+      labels:
+        app: example-pod
+        tier: app
+    spec:
+      containers:
+        - name: example-pod
+          image: nginx:1.14.2		# 사용할 이미지
+          ports:
+            - containerPort: 80
+              protocol: TCP
